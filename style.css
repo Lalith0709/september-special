@@ -17,8 +17,12 @@ h1 {
 }
 
 .countdown-box {
-  font-size: 1.8rem;
-  margin: 20px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #d63384;
+  text-shadow: 1px 1px 2px #fff;
+  text-align: center;
 }
 
 .message {

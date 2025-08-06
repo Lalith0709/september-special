@@ -1,22 +1,33 @@
 const countdownEl = document.getElementById("countdown");
 const birthday = new Date("September 7, 2025 00:00:00").getTime();
 const now = new Date().getTime();
-const distance = birthday - now;
 
-if (distance > 0) {
+if (now < birthday) {
+  // ✅ REAL COUNTDOWN BEFORE SEPT 7
+  startRealCountdown();
+} else {
+  // ✅ FAKE COUNTDOWN AFTER SEPT 7
+  startFakeCountdown();
+}
+
+// REAL COUNTDOWN FUNCTION
+function startRealCountdown() {
   const interval = setInterval(() => {
     const now = new Date().getTime();
-    const d = birthday - now;
+    const distance = birthday - now;
 
-    if (d <= 0) {
+    if (distance <= 0) {
       clearInterval(interval);
-      window.location.href = "surprise.html";
+      startFakeCountdown(); // Switch to fake countdown
     } else {
-      countdownEl.innerHTML = formatTime(d);
+      countdownEl.innerHTML = formatTime(distance);
     }
   }, 1000);
-} else {
-  let fakeTime = 10 * 24 * 60 * 60 * 1000;
+}
+
+// FAKE COUNTDOWN FUNCTION
+function startFakeCountdown() {
+  let fakeTime = 10 * 24 * 60 * 60 * 1000; // 10 days in ms
   let frame = 0;
   const totalFrames = 20;
 
@@ -30,9 +41,10 @@ if (distance > 0) {
       clearInterval(fastInterval);
       window.location.href = "surprise.html";
     }
-  }, 100);
+  }, 100); // 100ms per frame = 2s total
 }
 
+// FORMATTER FUNCTION
 function formatTime(ms) {
   const days = Math.floor(ms / (1000 * 60 * 60 * 24));
   const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
