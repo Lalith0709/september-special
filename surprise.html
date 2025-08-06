@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 18th Birthday!</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .gift-box {
+      width: 200px;
+      height: 200px;
+      margin: 50px auto;
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+      position: relative;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .gift-box.opened {
+      transform: rotateY(180deg);
+    }
+
+    .gift-box::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: #ffb6c1;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .gift-message {
+      display: none;
+      font-size: 1.2rem;
+      color: #a1007a;
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .gift-message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div class="container">
+    <h1>🎉 Happy 18th Birthday srujana! 🎉</h1>
+
+    <div id="gift" class="gift-box"></div>
+
+    <div id="message" class="gift-message">
+      💖 You’re finally 18! <br>
+      Happy birthday papa!  <br>
+      This is your moment & hope this message brings a smile on ur face. <br><br>
+      You deserve the world and so much more. 🥰
+    </div>
+
+    <p class="note">Tap the gift to open your surprise 💝</p>
+  </div>
+
+  <script src="confetti.js"></script>
+  <script>
+    const gift = document.getElementById("gift");
+    const message = document.getElementById("message");
+
+    gift.addEventListener("click", () => {
+      gift.classList.add("opened");
+      message.classList.add("show");
+    });
+
+    startConfetti();
+  </script>
+</body>
+</html>
