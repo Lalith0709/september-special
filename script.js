@@ -12,7 +12,8 @@ if (now < birthday) {
 
 // REAL COUNTDOWN FUNCTION
 function startRealCountdown() {
-  const interval = setInterval(() => {
+  const interval = setInterval(() => 
+    {
     const now = new Date().getTime();
     const distance = birthday - now;
 
@@ -22,7 +23,7 @@ function startRealCountdown() {
     } else {
       countdownEl.innerHTML = formatTime(distance);
     }
-  }, 1000);
+  }, 1000); //update every second
 }
 
 // FAKE COUNTDOWN FUNCTION
@@ -50,5 +51,5 @@ function formatTime(ms) {
   const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((ms % (1000 * 60)) / 1000);
-  return ${days}d ${hours}h ${minutes}m ${seconds}s;
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
